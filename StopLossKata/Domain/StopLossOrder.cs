@@ -34,17 +34,12 @@ namespace StopLossKata.Domain
 
         public bool ShouldSell()
         {
-            return _sellRule.ShouldSell(
-                _positionAcquiredMessage.SellPosition,
-                _lastPriceChangedMessage);
+            throw new NotImplementedException();
         }
 
         public bool ShouldAdjust()
         {
-            return _adjustmentRule.ShouldAdjust(
-                _positionAcquiredMessage.SellPosition,
-                _lastPriceChangedMessage,
-                _positionAcquiredMessage.AdjustmentTimeout);
+            throw new NotImplementedException();     
         }
     }
 }

@@ -15,25 +15,24 @@ namespace StopLossKata.Tests.Domain.StopLossOrder.Sell
 
         protected bool? Result = null;
 
-        
+
         protected override void When()
         {
             base.When();
 
-            var sellPosition = new Position
-            {
-                Price = SellPrice,
-                Timeout = SellTimeout,
-                Timestamp = PositionTimestamp,
-            };
+            var sellPrice = new Price
+                {
+                    Value = SellPrice,
+                    Timestamp = PositionTimestamp,
+                };
 
-            var message = new PriceChangedMessage
-            {
-                Price = NewPrice,
-                Timestamp = NewTimestamp,
-            };
+            var currentPrice = new Price
+                {
+                    Value = NewPrice,
+                    Timestamp = NewTimestamp,
+                };
 
-            Result = Rule.ShouldSell(sellPosition, message);
+            Result = Rule.ShouldSell(sellPrice, currentPrice, SellTimeout);
         }
     }
 }

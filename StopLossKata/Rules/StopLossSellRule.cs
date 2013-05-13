@@ -1,25 +1,23 @@
-﻿using StopLossKata.Messages;
+﻿using System;
+using StopLossKata.Messages;
 
 namespace StopLossKata.Rules
 {
     public class StopLossSellRule
     {
         private readonly TimeoutRule _timeoutRule;
-
+        
         public StopLossSellRule()
         {
             _timeoutRule = new TimeoutRule();
         }
 
 
-        public bool ShouldSell(Position sellPosition, PriceChangedMessage priceChangedMessage)
+        public bool ShouldSell(Price sellPrice, Price currentPrice, TimeSpan sellTimeout)
         {
-
-            if (_timeoutRule.HasTimeoutExpired(sellPosition.Timestamp,
-                                                 priceChangedMessage.Timestamp,
-                                                 sellPosition.Timeout))
+            if (currentPrice.Value < sellPrice.Value)
             {
-                if (priceChangedMessage.Price < sellPosition.Price)
+                if (_timeoutRule.HasTimeoutExpired(sellPrice.Timestamp, currentPrice.Timestamp, sellTimeout))
                 {
                     return true;
                 }

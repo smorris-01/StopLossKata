@@ -13,20 +13,19 @@ namespace StopLossKata.Tests.Domain.StopLossOrder.Adjust
         {
             base.When();
 
-            var sellPosition = new Position
+            var sellPrice = new Price
                 {
-                    Price = SellPrice,
-                    Timeout = SellTimeout,
+                    Value = SellPrice,
                     Timestamp = PositionTimestamp,
                 };
 
-            var message = new PriceChangedMessage
+            var currentPrice = new Price
                 {
-                    Price = NewPrice,
+                    Value = NewPrice,
                     Timestamp = NewTimestamp,
                 };
 
-            Result = Rule.ShouldAdjust(sellPosition, message, AdjustmentTimeout);
+            Result = Rule.ShouldAdjust(sellPrice, currentPrice, AdjustmentTimeout);
         }
     }
 }
