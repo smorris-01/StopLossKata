@@ -33,6 +33,9 @@
     <Reference Include="FluentAssertions">
       <HintPath>..\packages\FluentAssertions.2.0.1\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -45,10 +48,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rules\StopLossRuleConcern.cs" />
+    <Compile Include="Rules\StopLossAdjustmentRule\ConcernForStopLossAdjustmentRule.cs" />
+    <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_after_sell_timeout.cs" />
+    <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_before_sell_timeout.cs" />
+    <Compile Include="Rules\StopLossSellRule\ConcernForStopLossSellRule.cs" />
+    <Compile Include="Rules\StopLossSellRule\When_sell_price_decreases_after_sell_timeout.cs" />
+    <Compile Include="Rules\StopLossSellRule\When_sell_price_decreases_before_sell_timeout.cs" />
+    <Compile Include="Rules\StopLossSellRule\When_sell_price_does_not_change_after_sell_timeout.cs" />
+    <Compile Include="Rules\StopLossSellRule\When_sell_price_does_not_change_before_sell_timeout.cs" />
+    <Compile Include="Rules\StopLossAdjustmentRule\When_sell_price_increases_after_adjustment_timeout.cs" />
+    <Compile Include="Rules\StopLossAdjustmentRule\When_sell_price_increases_before_adjustment_timeout.cs" />
+    <Compile Include="Rules\TimeoutRule\Timeouts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StopLossKata\StopLossKata.csproj">
+      <Project>{ca8656ca-caed-4787-aa6a-6998b82de707}</Project>
+      <Name>StopLossKata</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
