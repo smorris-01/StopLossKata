@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\StopLossOrderBroker\When_broker_should_execute_sale.cs" />
     <Compile Include="Rules\ConcernForStopLossRule.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_after_sell_timeout.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_before_sell_timeout.cs" />
@@ -69,9 +70,7 @@
       <Name>StopLossKata</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,7 +2,7 @@
 
 namespace StopLossKata.Domain
 {
-    public interface IStopLossOrder
+    public interface IStopLossOrderBroker
     {
         void Handle(PositionAcquiredMessage message);
         void Handle(PriceChangedMessage message);

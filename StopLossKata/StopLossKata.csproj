@@ -46,10 +46,10 @@
     <Compile Include="Rules\StopLossSellRule.cs" />
     <Compile Include="Rules\TimeoutRule.cs" />
     <Compile Include="Infrastructure\ITimer.cs" />
-    <Compile Include="Domain\IStopLossOrder.cs" />
+    <Compile Include="Domain\IStopLossOrderBroker.cs" />
     <Compile Include="Messages\PositionAcquiredMessage.cs" />
     <Compile Include="Messages\PriceChangedMessage.cs" />
-    <Compile Include="Domain\StopLossOrder.cs" />
+    <Compile Include="Domain\StopLossOrderBroker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
