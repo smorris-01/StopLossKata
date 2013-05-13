@@ -1,14 +1,10 @@
 ﻿using System;
 using StopLossKata.Messages;
-using StopLossKata.Tests.Rules;
 
-namespace StopLossKata.Tests.Domain.StopLossOrder.Adjust
+namespace StopLossKata.Tests.Rules.StopLossAdjustmentRule
 {
     public abstract class RuleConcernForStopLossAdjustmentRule : StopLossAdjustmentRuleConcern<StopLossKata.Rules.StopLossAdjustmentRule>
     {
-        protected TimeSpan AdjustmentTimeout;
-
-        
         protected override void When()
         {
             base.When();
@@ -16,7 +12,7 @@ namespace StopLossKata.Tests.Domain.StopLossOrder.Adjust
             var sellPrice = new Price
                 {
                     Value = SellPrice,
-                    Timestamp = PositionTimestamp,
+                    Timestamp = SellTimestamp,
                 };
 
             var currentPrice = new Price
@@ -25,7 +21,7 @@ namespace StopLossKata.Tests.Domain.StopLossOrder.Adjust
                     Timestamp = NewTimestamp,
                 };
 
-            Result = Rule.ShouldAdjust(sellPrice, currentPrice, AdjustmentTimeout);
+            Result = Rule.ShouldAdjust(sellPrice, currentPrice, RuleTimeout);
         }
     }
 }

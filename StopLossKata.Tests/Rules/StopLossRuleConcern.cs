@@ -7,14 +7,14 @@ namespace StopLossKata.Tests.Rules
     public abstract class StopLossAdjustmentRuleConcern<T>
         where T: new()
     {
-
         protected decimal SellPrice;
-        protected TimeSpan SellTimeout;
-
-        protected DateTime PositionTimestamp;
+        protected DateTime SellTimestamp;
 
         protected decimal NewPrice;
         protected DateTime NewTimestamp;
+
+        protected TimeSpan RuleTimeout;
+
 
         protected bool? Result = null;
 

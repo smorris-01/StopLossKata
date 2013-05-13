@@ -1,21 +1,19 @@
 ﻿using System;
 using FluentAssertions;
 using NUnit.Framework;
-using StopLossKata.Rules;
-using StopLossKata.Tests.Rules;
 
-namespace StopLossKata.Tests.Domain.StopLossOrder
+namespace StopLossKata.Tests.Rules.TimeoutRule
 {
     [TestFixture]
     public class Timeouts
     {
-        private TimeoutRule Subject { get; set; }
+        private StopLossKata.Rules.TimeoutRule Subject { get; set; }
 
 
         [SetUp]
         public void Setup()
         {
-            Subject = new TimeoutRule();
+            Subject = new StopLossKata.Rules.TimeoutRule();
         }
 
 
