@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\StopLossOrder\When_order_receives_new_position_acquired_message.cs" />
     <Compile Include="Domain\StopLossOrder\When_order_receives_price_increase_within_timeout.cs" />
     <Compile Include="Rules\ConcernForStopLossRule.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_after_sell_timeout.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Rules\StopLossAdjustmentRule\When_sell_price_increases_before_adjustment_timeout.cs" />
     <Compile Include="Rules\TimeoutRule\Timeouts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scratch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

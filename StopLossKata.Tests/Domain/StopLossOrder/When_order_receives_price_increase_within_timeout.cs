@@ -47,10 +47,5 @@ namespace StopLossKata.Tests.Domain.StopLossOrder
             _order.Position.Should().Be(message01);
         }
 
-        [Test]
-        public void Then_the_original_position_price_should_remain_unchanged()
-        {
-            _order.Position.Price.Should().Be(message01.Price);
-        }
     }
 }
