@@ -4,16 +4,15 @@ using StopLossKata.Rules;
 
 namespace StopLossKata.Domain
 {
-    public class StopLossOrderBroker: IStopLossOrderBroker
+    public class StopLossOrder: IStopLossOrder
     {
         internal IStopLossRule SellRule { get; set; }
-        
-        private Price _sellPrice;
-        private Price _currentPrice;
 
+        public PositionAcquiredMessage Position { get; private set; }
+        
         private TimeSpan _sellTimeout;
         
-        public StopLossOrderBroker()
+        public StopLossOrder()
         {
             // TODO: constructor injection
             SellRule = new StopLossSellRule();
@@ -22,28 +21,15 @@ namespace StopLossKata.Domain
 
         public void Handle(PositionAcquiredMessage message)
         {
-            _sellPrice = message.Price;
+            Position = message;
         }
 
         public void Handle(PriceChangedMessage message)
         {
-            _currentPrice = message.Price;
-            
-            if (SellRule.ShouldExecute(_sellPrice, _currentPrice, _sellTimeout))
+            if (SellRule.ShouldExecute(Position.Price, message.Price, _sellTimeout))
             {
                 throw new NotImplementedException();
             }
-        }
-
-
-        public bool ShouldSell()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ShouldAdjust()
-        {
-            throw new NotImplementedException();     
         }
     }
 }
