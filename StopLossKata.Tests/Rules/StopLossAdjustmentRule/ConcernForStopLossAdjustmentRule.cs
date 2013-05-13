@@ -21,7 +21,7 @@ namespace StopLossKata.Tests.Rules.StopLossAdjustmentRule
                     Timestamp = NewTimestamp,
                 };
 
-            Result = Rule.ShouldAdjust(sellPrice, currentPrice, RuleTimeout);
+            Result = Rule.ShouldExecute(sellPrice, currentPrice, RuleTimeout);
         }
     }
 }

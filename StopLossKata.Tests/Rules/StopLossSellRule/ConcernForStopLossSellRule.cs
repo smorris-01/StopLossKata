@@ -21,7 +21,7 @@ namespace StopLossKata.Tests.Rules.StopLossSellRule
                     Timestamp = NewTimestamp,
                 };
 
-            Result = Rule.ShouldSell(sellPrice, currentPrice, RuleTimeout);
+            Result = Rule.ShouldExecute(sellPrice, currentPrice, RuleTimeout);
         }
     }
 }

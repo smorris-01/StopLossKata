@@ -13,11 +13,11 @@ namespace StopLossKata.Rules
         }
 
 
-        public bool ShouldSell(Price sellPrice, Price currentPrice, TimeSpan sellTimeout)
+        public bool ShouldExecute(Price sellPrice, Price currentPrice, TimeSpan timeout)
         {
             if (currentPrice.Value < sellPrice.Value)
             {
-                if (_timeoutRule.HasTimeoutExpired(sellPrice.Timestamp, currentPrice.Timestamp, sellTimeout))
+                if (_timeoutRule.HasTimeoutExpired(sellPrice.Timestamp, currentPrice.Timestamp, timeout))
                 {
                     return true;
                 }
