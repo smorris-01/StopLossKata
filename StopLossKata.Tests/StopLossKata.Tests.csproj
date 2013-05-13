@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Rules\StopLossRuleConcern.cs" />
+    <Compile Include="Rules\ConcernForStopLossRule.cs" />
     <Compile Include="Rules\StopLossAdjustmentRule\ConcernForStopLossAdjustmentRule.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_after_sell_timeout.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_before_sell_timeout.cs" />

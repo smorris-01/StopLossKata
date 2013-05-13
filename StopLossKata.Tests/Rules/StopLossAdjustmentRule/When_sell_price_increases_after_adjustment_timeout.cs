@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace StopLossKata.Tests.Rules.StopLossAdjustmentRule
 {
-    public class When_sell_price_increases_after_adjustment_timeout : RuleConcernForStopLossAdjustmentRule
+    public class When_sell_price_increases_after_adjustment_timeout : ConcernForStopLossAdjustmentRule
     {
         protected override void Given()
         {

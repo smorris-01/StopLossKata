@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace StopLossKata.Tests.Rules
 {
     [TestFixture]
-    public abstract class StopLossAdjustmentRuleConcern<T>
+    public abstract class ConcernForStopLossRule<T>
         where T: new()
     {
         protected decimal SellPrice;

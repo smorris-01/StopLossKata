@@ -3,7 +3,7 @@ using StopLossKata.Messages;
 
 namespace StopLossKata.Tests.Rules.StopLossAdjustmentRule
 {
-    public abstract class RuleConcernForStopLossAdjustmentRule : StopLossAdjustmentRuleConcern<StopLossKata.Rules.StopLossAdjustmentRule>
+    public abstract class ConcernForStopLossAdjustmentRule : ConcernForStopLossRule<StopLossKata.Rules.StopLossAdjustmentRule>
     {
         protected override void When()
         {
