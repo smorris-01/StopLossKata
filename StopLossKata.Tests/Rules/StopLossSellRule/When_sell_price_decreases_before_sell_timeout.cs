@@ -4,10 +4,12 @@ using NUnit.Framework;
 
 namespace StopLossKata.Tests.Rules.StopLossSellRule
 {
-    public class When_sell_price_decreases_before_sell_timeout : ConcernForStopLossSellRule
+    public class When_sell_price_decreases_before_sell_timeout : ConcernForStopLossRule<StopLossKata.Rules.StopLossSellRule>
     {
         protected override void Given()
         {
+            base.Given();
+
             SellPrice = 10.0m;
             SellTimestamp = new DateTime(2000, 12, 13, 13, 01, 00);
 
@@ -15,8 +17,6 @@ namespace StopLossKata.Tests.Rules.StopLossSellRule
 
             NewPrice = 9.5m;
             NewTimestamp = SellTimestamp.Add(RuleTimeout).AddSeconds(-1);
-
-            base.Given();
         }
 
         [Test]

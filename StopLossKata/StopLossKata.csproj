@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Messages\Price.cs" />
     <Compile Include="Messages\PriceMessage.cs" />
+    <Compile Include="Rules\IStopLossRule.cs" />
     <Compile Include="Rules\StopLossAdjustmentRule.cs" />
     <Compile Include="Rules\StopLossSellRule.cs" />
     <Compile Include="Rules\TimeoutRule.cs" />

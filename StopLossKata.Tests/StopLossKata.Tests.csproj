@@ -49,10 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Rules\ConcernForStopLossRule.cs" />
-    <Compile Include="Rules\StopLossAdjustmentRule\ConcernForStopLossAdjustmentRule.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_after_sell_timeout.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_increases_before_sell_timeout.cs" />
-    <Compile Include="Rules\StopLossSellRule\ConcernForStopLossSellRule.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_decreases_after_sell_timeout.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_decreases_before_sell_timeout.cs" />
     <Compile Include="Rules\StopLossSellRule\When_sell_price_does_not_change_after_sell_timeout.cs" />

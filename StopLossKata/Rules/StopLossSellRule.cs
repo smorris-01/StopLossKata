@@ -3,7 +3,7 @@ using StopLossKata.Messages;
 
 namespace StopLossKata.Rules
 {
-    public class StopLossSellRule
+    public class StopLossSellRule: IStopLossRule
     {
         private readonly TimeoutRule _timeoutRule;
         
