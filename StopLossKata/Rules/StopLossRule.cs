@@ -7,7 +7,12 @@ namespace StopLossKata.Rules
         public PositionAcquiredMessage Position { get; internal set; }
         public PriceChangedMessage CurrentPrice { get; internal set; }
 
-        protected readonly TimeoutHelper TimeoutHelper = new TimeoutHelper();
+        public TimeoutHelper TimeoutHelper { get; internal set; }
+        
+        protected StopLossRule()
+        {
+            TimeoutHelper = new TimeoutHelper();
+        }
 
         public void Handle(PositionAcquiredMessage message)
         {
