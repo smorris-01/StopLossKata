@@ -48,7 +48,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Rules\TimeoutHelper.cs" />
-    <Compile Include="Infrastructure\ITimer.cs" />
     <Compile Include="Messages\PositionAcquiredMessage.cs" />
     <Compile Include="Messages\PriceChangedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
