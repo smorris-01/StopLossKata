@@ -2,10 +2,10 @@
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace StopLossKata.Tests.Rules.TimeoutRule
+namespace StopLossKata.Tests.Rules
 {
     [TestFixture]
-    public class Timeouts
+    public class TimeoutHelperTests
     {
         private StopLossKata.Rules.TimeoutHelper Subject { get; set; }
 
