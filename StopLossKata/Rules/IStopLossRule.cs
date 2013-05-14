@@ -5,6 +5,7 @@ namespace StopLossKata.Rules
 {
     public interface IStopLossRule
     {
-        bool ShouldExecute(Price sellPrice, Price currentPrice, TimeSpan timeout);
+        bool ShouldExecute();
+        void Execute();
     }
 }
