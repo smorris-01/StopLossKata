@@ -1,28 +1,42 @@
 ﻿using System;
 using FluentAssertions;
 using NUnit.Framework;
+using StopLossKata.Messages;
 
 namespace StopLossKata.Tests.Rules.StopLossSellRule
 {
-    public class When_sell_price_decreases_after_sell_timeout : ConcernForStopLossRule<StopLossKata.Rules.StopLossSellRule>
+    public class When_sell_price_decreases_after_sell_timeout
     {
-        protected override void Given()
+        private StopLossKata.Rules.StopLossSellRule _rule;
+
+        private const int TimeoutSeconds = 10;
+        private TimeSpan _timeout = new TimeSpan(0, 0, TimeoutSeconds);
+
+        private const decimal Price = 20m;
+        
+        private PositionAcquiredMessage _positionAcquiredMessage =
+            new PositionAcquiredMessage 
+            { Price = new Price { Timestamp = DateTime.MinValue, Value = Price } };
+
+        private PriceChangedMessage _priceDecreasedAfterTimeoutMessage =
+            new PriceChangedMessage 
+            { Price = new Price { Timestamp = DateTime.MinValue.AddSeconds(TimeoutSeconds + 1), Value = Price - 1 } };
+
+
+        [SetUp]
+        public void Setup()
         {
-            base.Given();
-
-            SellPrice = 10.0m;
-            SellTimestamp = new DateTime(2000, 12, 13, 13, 01, 00);
-
-            RuleTimeout = new TimeSpan(0, 0, 15);
-
-            NewPrice = 9.5m;
-            NewTimestamp = SellTimestamp.Add(RuleTimeout);
+            _rule = new StopLossKata.Rules.StopLossSellRule();
+            _rule.Timeout = _timeout;
+            _rule.Handle(_positionAcquiredMessage);
+            _rule.Handle(_priceDecreasedAfterTimeoutMessage);
         }
- 
+
+
         [Test]
-        public void Then_sell_should_be_pending()
+        public void Then_position_should_remain_unchanged()
         {
-            Result.Should().Be(true);
+            _rule.Position.Should().Be(_positionAcquiredMessage);
         }
 
     }

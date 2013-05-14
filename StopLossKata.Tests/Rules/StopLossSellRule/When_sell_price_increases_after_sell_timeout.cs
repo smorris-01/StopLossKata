@@ -1,28 +1,45 @@
 ﻿using System;
 using FluentAssertions;
 using NUnit.Framework;
+using StopLossKata.Messages;
 
 namespace StopLossKata.Tests.Rules.StopLossSellRule
 {
-    public class When_sell_price_increases_after_sell_timeout : ConcernForStopLossRule<StopLossKata.Rules.StopLossSellRule>
+    public class When_sell_price_increases_after_sell_timeout 
     {
-        protected override void Given()
+        private StopLossKata.Rules.StopLossSellRule _rule;
+
+        private const int TimeoutSeconds = 10;
+        private TimeSpan _timeout = new TimeSpan(0, 0, TimeoutSeconds);
+
+        private const decimal Price = 20m;
+
+        private PositionAcquiredMessage _positionAcquiredMessage = new PositionAcquiredMessage 
+        { Price = new Price { Timestamp = DateTime.MinValue, Value = Price } };
+
+        private PriceChangedMessage _priceIncreasedAfterTimeoutMessage = new PriceChangedMessage 
+        { Price = new Price { Timestamp = DateTime.MinValue.AddSeconds(TimeoutSeconds + 1), Value = Price + 1 } };
+
+
+        [SetUp]
+        public void Setup()
         {
-            base.Given();
-
-            SellPrice = 10.0m;
-            SellTimestamp = new DateTime(2000, 12, 13, 13, 01, 00);
-
-            RuleTimeout = new TimeSpan(0, 0, 15);
-
-            NewPrice = 10.5m;
-            NewTimestamp = SellTimestamp.Add(RuleTimeout);
+            _rule = new StopLossKata.Rules.StopLossSellRule();
+            _rule.Timeout = _timeout;
+            _rule.Handle(_positionAcquiredMessage);
+            _rule.Handle(_priceIncreasedAfterTimeoutMessage);
         }
  
         [Test]
-        public void Then_sell_should_not_be_pending()
+        public void Then_position_should_have_changed()
         {
-            Result.Should().Be(false);
+            _rule.Position.Should().NotBe(_positionAcquiredMessage);
+        }
+
+        [Test]
+        public void Then_position_price_should_be_new_price()
+        {
+            _rule.Position.Price.Should().Be(_priceIncreasedAfterTimeoutMessage.Price);
         }
 
     }
