@@ -1,5 +1,4 @@
-﻿using System;
-using StopLossKata.Messages;
+﻿using StopLossKata.Messages;
 
 namespace StopLossKata.Rules
 {
@@ -8,7 +7,8 @@ namespace StopLossKata.Rules
         public PositionAcquiredMessage Position { get; internal set; }
         public PriceChangedMessage CurrentPrice { get; internal set; }
 
-        
+        protected readonly TimeoutHelper TimeoutHelper = new TimeoutHelper();
+
         public void Handle(PositionAcquiredMessage message)
         {
             Position = message;

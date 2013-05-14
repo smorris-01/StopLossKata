@@ -2,7 +2,7 @@
 
 namespace StopLossKata.Rules
 {
-    public class TimeoutRule
+    public class TimeoutHelper
     {
         internal bool HasTimeoutExpired(DateTime intial, DateTime subsequent, TimeSpan timeout)
         {

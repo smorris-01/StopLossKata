@@ -47,7 +47,7 @@
     <Compile Include="Rules\StopLossSellRule.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Rules\TimeoutRule.cs" />
+    <Compile Include="Rules\TimeoutHelper.cs" />
     <Compile Include="Infrastructure\ITimer.cs" />
     <Compile Include="Messages\PositionAcquiredMessage.cs" />
     <Compile Include="Messages\PriceChangedMessage.cs" />

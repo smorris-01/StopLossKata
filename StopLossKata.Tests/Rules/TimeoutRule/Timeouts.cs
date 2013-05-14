@@ -7,13 +7,13 @@ namespace StopLossKata.Tests.Rules.TimeoutRule
     [TestFixture]
     public class Timeouts
     {
-        private StopLossKata.Rules.TimeoutRule Subject { get; set; }
+        private StopLossKata.Rules.TimeoutHelper Subject { get; set; }
 
 
         [SetUp]
         public void Setup()
         {
-            Subject = new StopLossKata.Rules.TimeoutRule();
+            Subject = new StopLossKata.Rules.TimeoutHelper();
         }
 
 

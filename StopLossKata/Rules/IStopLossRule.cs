@@ -1,7 +1,4 @@
-﻿using System;
-using StopLossKata.Messages;
-
-namespace StopLossKata.Rules
+﻿namespace StopLossKata.Rules
 {
     public interface IStopLossRule
     {
